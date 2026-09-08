@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+  <style>text{font-family:Arial,sans-serif;fill:#172033}.title{font-size:28px;font-weight:bold}.subtitle{font-size:17px;fill:#526075}.box{fill:#f8fafc;stroke:#2563eb;stroke-width:2}.head{fill:#2563eb}.headtext{font-size:21px;font-weight:bold;fill:#fff}.body{font-size:16px}.arrow{stroke:#64748b;stroke-width:3;marker-end:url(#arrow)}</style>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+  <rect width="1200" height="620" fill="#fff"/>
+  <text x="60" y="58" class="title">Task Manager API: recursos, operacoes HTTP e respostas</text>
+  <text x="60" y="88" class="subtitle">As versoes v1 e v2 coexistem sob /api/v1 e /api/v2</text>
+  <rect x="70" y="145" width="360" height="330" rx="12" class="box"/><rect x="70" y="145" width="360" height="55" rx="12" class="head"/><text x="92" y="181" class="headtext">/auth</text>
+  <text x="95" y="238" class="body">POST /register</text><text x="300" y="238" class="body">201 Created</text>
+  <text x="95" y="285" class="body">POST /login</text><text x="300" y="285" class="body">200 OK</text>
+  <text x="95" y="355" class="subtitle">Resposta: token JWT + usuario</text>
+  <text x="95" y="392" class="subtitle">Erros: 400, 409</text>
+  <line x1="445" y1="310" x2="540" y2="310" class="arrow"/>
+  <rect x="555" y="115" width="550" height="410" rx="12" class="box"/><rect x="555" y="115" width="550" height="55" rx="12" class="head"/><text x="577" y="151" class="headtext">/tasks (JWT obrigatorio)</text>
+  <text x="580" y="215" class="body">GET /tasks                         200 OK (pagina)</text>
+  <text x="580" y="260" class="body">GET /tasks/{id}                    200 OK</text>
+  <text x="580" y="305" class="body">POST /tasks                        201 Created</text>
+  <text x="580" y="350" class="body">PATCH /tasks/{id}                  200 OK</text>
+  <text x="580" y="395" class="body">DELETE v1 /tasks/{id}              204 No Content</text>
+  <text x="580" y="440" class="body">DELETE v2 /tasks/{id}              200 OK (CANCELLED)</text>
+  <text x="580" y="488" class="subtitle">Erros: 401, 403, 404</text>
+  <text x="70" y="570" class="subtitle">Figura 1 - Modelo de recursos, operacoes HTTP e respostas da Task Manager API.</text>
+</svg>

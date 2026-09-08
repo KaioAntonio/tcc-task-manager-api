@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+  <style>text{font-family:Arial,sans-serif;fill:#172033}.brand{font-size:30px;font-weight:bold;fill:#fff}.title{font-size:25px;font-weight:bold}.sub{font-size:16px;fill:#526075}.tag{font-size:20px;font-weight:bold}.method{font-size:15px;font-weight:bold;fill:#fff}.path{font-size:17px;font-family:Consolas,monospace}.bar{fill:#fff;border:1px solid #ddd}.get{fill:#2563eb}.post{fill:#16a34a}.delete{fill:#dc2626}</style>
+  <rect width="1200" height="650" fill="#f7f7f7"/><rect width="1200" height="70" fill="#85b82a"/><text x="45" y="47" class="brand">swagger</text><text x="188" y="47" class="brand">Task Manager API</text>
+  <text x="55" y="115" class="title">Task Manager API</text><text x="55" y="145" class="sub">OpenAPI documentation with v1 and v2 operations</text>
+  <rect x="55" y="180" width="1090" height="52" fill="#eef5df"/><text x="75" y="214" class="tag">Auth v1</text>
+  <rect x="55" y="242" width="1090" height="48" fill="#e8f5e9"/><rect x="70" y="252" width="70" height="28" rx="3" class="post"/><text x="82" y="272" class="method">POST</text><text x="165" y="272" class="path">/api/v1/auth/login</text>
+  <rect x="55" y="300" width="1090" height="52" fill="#eef5df"/><text x="75" y="334" class="tag">Tasks v1</text>
+  <rect x="55" y="362" width="1090" height="48" fill="#e8f0ff"/><rect x="70" y="372" width="70" height="28" rx="3" class="get"/><text x="84" y="392" class="method">GET</text><text x="165" y="392" class="path">/api/v1/tasks</text>
+  <rect x="55" y="420" width="1090" height="52" fill="#eef5df"/><text x="75" y="454" class="tag">Tasks v2</text>
+  <rect x="55" y="482" width="1090" height="48" fill="#e8f0ff"/><rect x="70" y="492" width="70" height="28" rx="3" class="get"/><text x="84" y="512" class="method">GET</text><text x="165" y="512" class="path">/api/v2/tasks</text>
+  <rect x="55" y="540" width="1090" height="48" fill="#feecec"/><rect x="70" y="550" width="70" height="28" rx="3" class="delete"/><text x="77" y="570" class="method">DELETE</text><text x="165" y="570" class="path">/api/v2/tasks/{id}  - soft delete</text>
+  <text x="55" y="625" class="sub">Figura 5 - Vista da Swagger UI com operacoes das versoes v1 e v2.</text>
+</svg>
