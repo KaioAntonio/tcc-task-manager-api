@@ -33,7 +33,12 @@ import org.springframework.web.bind.annotation.*;
 public class TaskController {
     private final TaskService taskService;
     @GetMapping
-    @Operation(summary = "Listar tarefas (v2)", description = "Mesma semantica v1 + parametro sort")
+    @Operation(summary = "Listar tarefas (v2)", description = "Mesma semantica v1 + parametro sort",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Listagem paginada retornada com sucesso"),
+            @ApiResponse(responseCode = "401", description = "Token ausente ou invalido")
+        }
+    )
     public ResponseEntity<PagedResponse<TaskResponse>> list(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -42,17 +47,38 @@ public class TaskController {
         return ResponseEntity.ok(taskService.listTasks(page, size, status, authentication));
     }
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar tarefa por ID (v2)")
+    @Operation(summary = "Buscar tarefa por ID (v2)",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Tarefa encontrada"),
+            @ApiResponse(responseCode = "401", description = "Token ausente ou invalido"),
+            @ApiResponse(responseCode = "403", description = "Tarefa pertence a outro usuario"),
+            @ApiResponse(responseCode = "404", description = "Tarefa nao encontrada")
+        }
+    )
     public ResponseEntity<TaskResponse> getById(@PathVariable Long id, Authentication authentication) {
         return ResponseEntity.ok(taskService.getTask(id, authentication));
     }
     @PostMapping
-    @Operation(summary = "Criar nova tarefa (v2)")
+    @Operation(summary = "Criar nova tarefa (v2)",
+        responses = {
+            @ApiResponse(responseCode = "201", description = "Tarefa criada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados invalidos (ex.: titulo vazio)"),
+            @ApiResponse(responseCode = "401", description = "Token ausente ou invalido")
+        }
+    )
     public ResponseEntity<TaskResponse> create(@Valid @RequestBody TaskRequest request, Authentication authentication) {
         return ResponseEntity.status(HttpStatus.CREATED).body(taskService.createTask(request, authentication));
     }
     @PatchMapping("/{id}")
-    @Operation(summary = "Atualizar tarefa parcial (v2)")
+    @Operation(summary = "Atualizar tarefa parcial (v2)",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Tarefa atualizada com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Dados invalidos"),
+            @ApiResponse(responseCode = "401", description = "Token ausente ou invalido"),
+            @ApiResponse(responseCode = "403", description = "Tarefa pertence a outro usuario"),
+            @ApiResponse(responseCode = "404", description = "Tarefa nao encontrada")
+        }
+    )
     public ResponseEntity<TaskResponse> update(@PathVariable Long id,
                                                 @Valid @RequestBody TaskUpdateRequest request,
                                                 Authentication authentication) {
@@ -69,8 +95,9 @@ public class TaskController {
         description = "v2: retorna 200 com o recurso marcado como CANCELLED. v1 retornava 204 sem body.",
         responses = {
             @ApiResponse(responseCode = "200", description = "Tarefa cancelada com sucesso"),
-            @ApiResponse(responseCode = "404", description = "Tarefa nao encontrada"),
-            @ApiResponse(responseCode = "403", description = "Acesso negado")
+            @ApiResponse(responseCode = "401", description = "Token ausente ou invalido"),
+            @ApiResponse(responseCode = "403", description = "Tarefa pertence a outro usuario"),
+            @ApiResponse(responseCode = "404", description = "Tarefa nao encontrada")
         }
     )
     public ResponseEntity<TaskResponse> softDelete(@PathVariable Long id, Authentication authentication) {
